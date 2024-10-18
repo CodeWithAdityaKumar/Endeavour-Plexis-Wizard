@@ -1,0 +1,55 @@
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: #003366;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    .navbar-container {
+        padding: 0 2rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+    
+    .faculty-card {
+        padding: 0.5rem;
+    }
+    
+    #booking-form, #chat-section {
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar-logo {
+        font-size: 1.2rem;
+    }
+    
+    .faculty-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    input, select, button {
+        font-size: 0.9rem;
+    }
+}

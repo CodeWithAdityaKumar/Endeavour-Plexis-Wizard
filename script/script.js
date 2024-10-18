@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuIcon = document.querySelector('.menu-icon');
     const navMenu = document.querySelector('.nav-menu');
+    const themeToggle = document.getElementById('theme-toggle-checkbox');
 
     menuIcon.addEventListener('click', () => {
         menuIcon.classList.toggle('active');
@@ -14,6 +15,26 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.remove('active');
         }
     });
+
+    // Theme toggle
+    themeToggle.addEventListener('change', () => {
+        if (themeToggle.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'dark') {
+            themeToggle.checked = true;
+        }
+    }
 
     // Initialize the page
     displayFacultyProfiles();

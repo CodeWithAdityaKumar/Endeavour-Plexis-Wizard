@@ -8,7 +8,7 @@
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background-color: #003366;
+        background-color: var(--primary-color);
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -24,19 +24,16 @@
     }
 
     .navbar-container {
-        padding: 0 2rem;
+        padding: 0 1rem;
     }
 
-    main {
-        padding: 1rem;
+    .navbar-right {
+        display: flex;
+        align-items: center;
     }
-    
-    .faculty-card {
-        padding: 0.5rem;
-    }
-    
-    #booking-form, #chat-section {
-        padding: 0.5rem;
+
+    .theme-toggle {
+        margin-right: 1rem;
     }
 }
 
@@ -51,5 +48,9 @@
     
     input, select, button {
         font-size: 0.9rem;
+    }
+
+    .theme-toggle {
+        margin-right: 0.5rem;
     }
 }

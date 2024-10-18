@@ -1,0 +1,138 @@
+.profile-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.profile-container h1 {
+    color: hsl(var(--primary));
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.profile-content {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.profile-image-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-right: 2rem;
+}
+
+#profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.upload-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-btn:hover {
+    background-color: hsl(var(--primary) / 0.8);
+}
+
+.upload-btn i {
+    font-size: 1.2rem;
+}
+
+.upload-btn span {
+    display: none;
+}
+
+.profile-info h2 {
+    margin-bottom: 0.5rem;
+}
+
+.profile-info p {
+    color: hsl(var(--muted-foreground));
+}
+
+#profileForm {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    color: hsl(var(--foreground));
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.75rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    font-size: 1rem;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+}
+
+.update-btn {
+    padding: 0.75rem;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.update-btn:hover {
+    background-color: hsl(var(--primary) / 0.8);
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-image-container {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .upload-btn {
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        bottom: -1rem;
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .upload-btn i {
+        margin-right: 0.5rem;
+    }
+
+    .upload-btn span {
+        display: inline;
+    }
+}

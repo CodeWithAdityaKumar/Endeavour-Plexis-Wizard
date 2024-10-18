@@ -1,81 +1,134 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SLIET Faculty Mentorship Booking</title>
-    <link rel="stylesheet" href="stylesheet/style.css">
-    <link rel="stylesheet" href="stylesheet/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>SLIET Mentorship - Find Your Perfect Academic Mentor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <div class="navbar-container">
-                <a href="#" class="navbar-logo">
-                    <i class="fas fa-graduation-cap"></i>
-                    SLIET Mentorship
-                </a>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="#faculty-list" class="nav-link"><i class="fas fa-users"></i> Faculty</a></li>
-                    <li class="nav-item"><a href="#booking-form" class="nav-link"><i class="fas fa-calendar-alt"></i> Book Session</a></li>
-                </ul>
-                <div class="navbar-right">
-                    <div class="theme-toggle">
-                        <input type="checkbox" id="theme-toggle-checkbox" class="theme-toggle-checkbox">
-                        <label for="theme-toggle-checkbox" class="theme-toggle-label">
-                            <i class="fas fa-sun"></i>
-                            <i class="fas fa-moon"></i>
-                            <span class="theme-toggle-ball"></span>
-                        </label>
-                    </div>
-                    <div class="menu-icon">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </div>
-                </div>
+        <nav>
+            <div class="logo navLeft">
+                <img src="/images/logoSliet.png" alt="SLIET Logo" class="logo-image">
+                <h1>SLIET Mentorship</h1>
             </div>
+            <div class="navRight">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#mentors">Mentors</a></li>
+                <li><a href="#departments">Departments</a></li>
+                <li><a href="#about">About</a></li>
+                <li class="auth-buttons">
+                    <button class="login-btn">Log in</button>
+                    <button class="signup-btn">Sign up</button>
+                </li>
+            </ul>
+
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button id="menu-toggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
         </nav>
     </header>
-    
+
     <main>
-        <section id="faculty-list">
-            <h2>Faculty Profiles</h2>
-            <!-- Faculty profiles will be dynamically inserted here -->
-        </section>
-        
-        <section id="booking-form" style="display: none;">
-            <h2>Book a Mentorship Session</h2>
-            <form id="mentor-booking-form">
-                <input type="hidden" id="selected-mentor" name="mentor">
-                <label for="student-name">Your Name:</label>
-                <input type="text" id="student-name" name="student-name" required>
-                <label for="student-email">Your Email:</label>
-                <input type="email" id="student-email" name="student-email" required>
-                <label for="timeslot">Select a Timeslot:</label>
-                <select id="timeslot" name="timeslot" required>
-                    <!-- Available timeslots will be dynamically inserted here -->
-                </select>
-                <button type="submit">Book Session</button>
-            </form>
+        <section id="hero">
+            <div class="hero-content">
+                <h2>Find Your Perfect Academic Mentor at SLIET</h2>
+                <p>Connect with experienced faculty members to guide your academic journey</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for mentors or departments...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
         </section>
 
-        <section id="chat-section" style="display: none;">
-            <h2>Chat with Mentor</h2>
-            <div id="chat-messages"></div>
-            <form id="chat-form">
-                <input type="text" id="chat-input" placeholder="Type your message..." required>
-                <button type="submit">Send</button>
-            </form>
+        <section id="featured-mentors">
+            <h2>Featured SLIET Mentors</h2>
+            <div class="mentor-grid">
+                <!-- Mentor items will be dynamically added here -->
+            </div>
+        </section>
+
+        <section id="popular-departments">
+            <h2>Popular SLIET Departments</h2>
+            <div class="department-grid">
+                <!-- Department items will be dynamically added here -->
+            </div>
+        </section>
+
+        <section id="how-it-works">
+            <h2>How SLIET Mentorship Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <i class="fas fa-search"></i>
+                    <h3>Find a Mentor</h3>
+                    <p>Browse our list of experienced SLIET faculty members</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-comments"></i>
+                    <h3>Connect</h3>
+                    <p>Schedule one-on-one sessions with your chosen mentor</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Learn & Grow</h3>
+                    <p>Gain insights, improve your skills, and excel in your academic pursuits</p>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 SLIET Faculty Mentorship. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SLIET Mentorship</h3>
+                <p>Your trusted source for finding academic mentors at Sant Longowal Institute of Engineering and Technology.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#mentors">Mentors</a></li>
+                    <li><a href="#departments">Departments</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SLIET Mentorship. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="script/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

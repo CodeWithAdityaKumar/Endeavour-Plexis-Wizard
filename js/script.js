@@ -130,9 +130,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateLogo() {
         if (document.body.classList.contains('dark')) {
-            logoImage.src = '/images/logoSlietWhite.png';
+            logoImage.src = 'https://codewithadityakumar.github.io/Endeavour_Plexus/images/logoSlietWhite.png';
         } else {
-            logoImage.src = '/images/logoSliet.png';
+            logoImage.src = 'https://codewithadityakumar.github.io/Endeavour_Plexus/images/logoSliet.png';
         }
     }
 

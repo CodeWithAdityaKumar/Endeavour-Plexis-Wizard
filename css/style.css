@@ -296,6 +296,10 @@ footer {
         flex-wrap: wrap;
     }
 
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+
     .nav-links {
         position: fixed;
         top: 0;

@@ -49,7 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Generate a unique ID for the user
+        const userId = Date.now().toString();
+
         const userData = {
+            id: userId,
             fullName,
             email,
             phone,
@@ -65,6 +69,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Store user data in local storage
         localStorage.setItem(email, JSON.stringify(userData));
+
+        // Also store the user ID in a separate list for easy access
+        let userIds = JSON.parse(localStorage.getItem('userIds')) || [];
+        userIds.push(userId);
+        localStorage.setItem('userIds', JSON.stringify(userIds));
 
         alert('Signup successful! Please log in.');
         window.location.href = 'login.html';

@@ -55,12 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.querySelector('.search-bar input');
     const searchButton = document.querySelector('.search-bar button');
 
-    searchButton.addEventListener('click', performSearch);
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            performSearch();
-        }
-    });
+    if (searchInput && searchButton) {
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    }
 
     function performSearch() {
         const searchTerm = searchInput.value.toLowerCase();
@@ -80,69 +82,73 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-    });
-
-    // Close menu when a link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            document.body.classList.remove('menu-open');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
         });
-    });
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('nav') && !event.target.closest('.nav-links')) {
-            navLinks.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        }
-    });
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
 
-    // Prevent closing when clicking inside the menu
-    navLinks.addEventListener('click', (event) => {
-        event.stopPropagation();
-    });
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('nav') && !event.target.closest('.nav-links')) {
+                navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+
+        // Prevent closing when clicking inside the menu
+        navLinks.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    }
 
     // Theme toggle functionality
     const themeToggle = document.getElementById('theme-toggle');
-    const sunIcon = themeToggle.querySelector('.sun-icon');
-    const moonIcon = themeToggle.querySelector('.moon-icon');
+    const sunIcon = themeToggle ? themeToggle.querySelector('.sun-icon') : null;
+    const moonIcon = themeToggle ? themeToggle.querySelector('.moon-icon') : null;
     const logoImage = document.querySelector('.logo-image');
 
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        updateThemeIcon();
-        updateLogo();
-    });
+    if (themeToggle && sunIcon && moonIcon && logoImage) {
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            updateThemeIcon();
+            updateLogo();
+        });
 
-    function updateThemeIcon() {
-        if (document.body.classList.contains('dark')) {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-        } else {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
+        function updateThemeIcon() {
+            if (document.body.classList.contains('dark')) {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
         }
-    }
 
-    function updateLogo() {
-        if (document.body.classList.contains('dark')) {
-            logoImage.src = 'https://codewithadityakumar.github.io/Endeavour_Plexus/images/logoSlietWhite.png';
-        } else {
-            logoImage.src = 'https://codewithadityakumar.github.io/Endeavour_Plexus/images/logoSliet.png';
+        function updateLogo() {
+            if (document.body.classList.contains('dark')) {
+                logoImage.src = 'https://codewithadityakumar.github.io/Endeavour_Plexus/images/logoSlietWhite.png';
+            } else {
+                logoImage.src = 'https://codewithadityakumar.github.io/Endeavour_Plexus/images/logoSliet.png';
+            }
         }
-    }
 
-    // Check for user's preferred color scheme
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-        updateThemeIcon();
-        updateLogo();
-    } else {
-        updateLogo(); // Ensure correct logo is set on initial load
+        // Check for user's preferred color scheme
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark');
+            updateThemeIcon();
+            updateLogo();
+        } else {
+            updateLogo(); // Ensure correct logo is set on initial load
+        }
     }
 
     // Populate mentor grid

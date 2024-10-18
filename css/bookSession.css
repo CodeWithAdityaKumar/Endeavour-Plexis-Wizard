@@ -1,0 +1,136 @@
+.book-session-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.book-session-container h1 {
+    color: hsl(var(--primary));
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+#departmentFilter, #mentorSearch {
+    padding: 0.5rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    font-size: 1rem;
+}
+
+#departmentFilter {
+    width: 200px;
+}
+
+#mentorSearch {
+    width: 300px;
+}
+
+.mentor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.mentor-card {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-start;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mentor-card h2 {
+    color: hsl(var(--primary));
+    margin-bottom: 0.5rem;
+}
+
+.mentor-card p {
+    margin-bottom: 0.5rem;
+    color: hsl(var(--muted-foreground));
+}
+
+.mentor-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+}
+
+.mentor-info h2 {
+    color: hsl(var(--primary));
+    margin-bottom: 0.5rem;
+}
+
+.mentor-info p {
+    margin-bottom: 0.5rem;
+}
+
+.available-slots h2 {
+    color: hsl(var(--primary));
+    margin-bottom: 1rem;
+}
+
+.slot-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.slot-list li {
+    background-color: hsl(var(--accent));
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-btn {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+    background-color: hsl(var(--primary) / 0.8);
+}
+
+.booked {
+    color: hsl(var(--muted-foreground));
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .filter-section {
+        flex-direction: column;
+    }
+
+    #departmentFilter, #mentorSearch {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .mentor-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .mentor-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}

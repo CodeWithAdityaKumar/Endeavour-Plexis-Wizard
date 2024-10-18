@@ -1,3 +1,7 @@
+import { initializeUserActions } from './userActions.js';
+import { initializeMentorActions } from './mentorActions.js';
+import mentorProfiles from './mentorProfiles.js';
+
 document.addEventListener('DOMContentLoaded', function() {
     const loggedInUserEmail = sessionStorage.getItem('loggedInUser');
     if (!loggedInUserEmail) {
@@ -17,42 +21,69 @@ document.addEventListener('DOMContentLoaded', function() {
         userProfileImage.src = '../../../images/default-profile.png';
     }
 
-    // Sample upcoming sessions data
-    const upcomingSessions = [
-        { mentor: 'Dr. Anil Kumar', date: '2024-03-15', time: '14:00' },
-        { mentor: 'Prof. Priya Sharma', date: '2024-03-18', time: '10:30' },
-        { mentor: 'Dr. Rajesh Verma', date: '2024-03-20', time: '16:00' }
-    ];
+    // Show appropriate actions based on user type
+    const userActions = document.getElementById('userActions');
+    const mentorActions = document.getElementById('mentorActions');
+    if (userData.userType === 'mentor') {
+        mentorActions.style.display = 'block';
+        initializeMentorActions();
+    } else {
+        userActions.style.display = 'block';
+        initializeUserActions();
+    }
 
-    const sessionsList = document.getElementById('sessionsList');
-    const bookSessionBtn = document.getElementById('bookSession');
-    const viewMentorsBtn = document.getElementById('viewMentors');
+    // Add event listener for Add Availability button (only for mentors)
+    const addAvailabilityBtn = document.getElementById('addAvailability');
+    if (addAvailabilityBtn && userData.userType === 'mentor') {
+        addAvailabilityBtn.addEventListener('click', () => {
+            window.location.href = 'addAvailability.html';
+        });
+    }
 
     // Populate upcoming sessions
+    const sessionsList = document.getElementById('sessionsList');
+    const upcomingSessions = JSON.parse(localStorage.getItem(`sessions_${loggedInUserEmail}`)) || [];
+    
     upcomingSessions.forEach(session => {
         const li = document.createElement('li');
         li.innerHTML = `
             <div class="session-info">
-                <strong>${session.mentor}</strong> - ${session.date} at ${session.time}
+                <strong>${session.mentorName}</strong> - ${session.date} at ${session.time}
             </div>
             <div class="session-actions">
-                <button class="action-btn"><i class="fas fa-video"></i></button>
-                <button class="action-btn"><i class="fas fa-times"></i></button>
+                <button class="action-btn join-session" data-session-id="${session.id}"><i class="fas fa-video"></i></button>
+                <button class="action-btn cancel-session" data-session-id="${session.id}"><i class="fas fa-times"></i></button>
             </div>
         `;
         sessionsList.appendChild(li);
     });
 
-    // Event listeners for quick action buttons
-    bookSessionBtn.addEventListener('click', () => {
-        alert('Redirecting to book a session page...');
-        // Implement the redirection logic here
+    // Event delegation for session actions
+    sessionsList.addEventListener('click', function(e) {
+        if (e.target.classList.contains('join-session')) {
+            const sessionId = e.target.getAttribute('data-session-id');
+            joinSession(sessionId);
+        } else if (e.target.classList.contains('cancel-session')) {
+            const sessionId = e.target.getAttribute('data-session-id');
+            if (confirm('Are you sure you want to cancel this session?')) {
+                cancelSession(sessionId);
+            }
+        }
     });
 
-    viewMentorsBtn.addEventListener('click', () => {
-        alert('Redirecting to view mentors page...');
-        // Implement the redirection logic here
-    });
+    function joinSession(sessionId) {
+        // Implement join session logic
+        console.log(`Joining session ${sessionId}`);
+        alert(`Joining session ${sessionId}`);
+        // In a real application, you might redirect to a video call or open a modal
+    }
+
+    function cancelSession(sessionId) {
+        let sessions = JSON.parse(localStorage.getItem(`sessions_${loggedInUserEmail}`)) || [];
+        sessions = sessions.filter(session => session.id !== sessionId);
+        localStorage.setItem(`sessions_${loggedInUserEmail}`, JSON.stringify(sessions));
+        location.reload(); // Refresh the page to update the sessions list
+    }
 
     // Logout functionality
     const logoutBtn = document.getElementById('logout');
@@ -130,4 +161,54 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks.addEventListener('click', (event) => {
         event.stopPropagation();
     });
+
+    const mentorList = document.getElementById('mentorList');
+
+    function displayMentorProfiles() {
+        mentorProfiles.forEach(mentor => {
+            const mentorCard = document.createElement('div');
+            mentorCard.className = 'mentor-card';
+            mentorCard.innerHTML = `
+                <h3>${mentor.name}</h3>
+                <p><strong>Department:</strong> ${mentor.department}</p>
+                <p><strong>Expertise:</strong> ${mentor.expertise.join(', ')}</p>
+                <p><strong>Experience:</strong> ${mentor.experience}</p>
+                <p>${mentor.bio}</p>
+                <h4>Available Slots:</h4>
+                <ul class="slot-list">
+                    ${mentor.availableSlots.map(slot => `
+                        <li>
+                            ${slot.day} ${slot.time}
+                            ${slot.status === 'available' 
+                                ? `<button class="book-btn" data-mentor-id="${mentor.id}" data-slot="${slot.day} ${slot.time}">Book</button>`
+                                : '<span class="booked">Booked</span>'
+                            }
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            mentorList.appendChild(mentorCard);
+        });
+    }
+
+    displayMentorProfiles();
+
+    // Event delegation for booking buttons
+    mentorList.addEventListener('click', function(e) {
+        if (e.target.classList.contains('book-btn')) {
+            const mentorId = e.target.getAttribute('data-mentor-id');
+            const slot = e.target.getAttribute('data-slot');
+            bookSession(mentorId, slot);
+        }
+    });
+
+    function bookSession(mentorId, slot) {
+        // Here you would typically send a request to your server to book the session
+        // For this example, we'll just update the UI
+        alert(`Session booked with Mentor ID ${mentorId} for ${slot}`);
+        e.target.textContent = 'Booked';
+        e.target.disabled = true;
+        e.target.classList.remove('book-btn');
+        e.target.classList.add('booked');
+    }
 });

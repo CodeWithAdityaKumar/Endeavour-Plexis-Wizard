@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - SLIET Mentorship</title>
+    <title>Book Session - SLIET Mentorship</title>
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="../../../css/dashboard.css">
+    <link rel="stylesheet" href="../../../css/bookSession.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -28,20 +29,8 @@
                         <span class="notification-count">3</span>
                     </a>
                     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon" style="display: none;">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon" style="display: none;"></i>
                     </button>
                     <button id="menu-toggle" class="menu-toggle">
                         <i class="fas fa-bars"></i>
@@ -51,29 +40,14 @@
         </nav>
     </header>
 
-    <main class="dashboard-container">
-        <div class="dashboard-header">
-            <img id="userProfileImage" src="" alt="Profile Picture">
-            <h1>Welcome, <span id="userName"></span>!</h1>
+    <main class="book-session-container">
+        <h1>Book a Mentorship Session</h1>
+        <div id="mentorProfile" class="mentor-profile">
+            <!-- Mentor profile will be dynamically added here -->
         </div>
-        <div class="dashboard-content">
-            <section class="upcoming-sessions">
-                <h2>Upcoming Sessions</h2>
-                <ul id="sessionsList">
-                    <!-- Sessions will be dynamically added here -->
-                </ul>
-            </section>
-            <section class="quick-actions">
-                <h2>Quick Actions</h2>
-                <div id="userActions" style="display: none;">
-                    <button id="bookSession" class="action-btn"><i class="fas fa-calendar-plus"></i> Book a Session</button>
-                    <button id="viewMentors" class="action-btn"><i class="fas fa-users"></i> View Mentors</button>
-                </div>
-                <div id="mentorActions" style="display: none;">
-                    <button id="addAvailability" class="action-btn"><i class="fas fa-clock"></i> Add Availability</button>
-                    <button id="viewRequests" class="action-btn"><i class="fas fa-list"></i> View Session Requests</button>
-                </div>
-            </section>
+        <div id="availableSlots" class="available-slots">
+            <h2>Available Time Slots</h2>
+            <!-- Available slots will be dynamically added here -->
         </div>
     </main>
 
@@ -107,8 +81,6 @@
     </footer>
 
     <script src="../../../js/script.js"></script>
-<script src="../../../js/dashboard.js" type="module"></script>
-<script src="../../../js/userActions.js" type="module"></script>
-<script src="../../../js/mentorActions.js" type="module"></script>
+    <script src="../../../js/bookSession.js" type="module"></script>
 </body>
 </html>

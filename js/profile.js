@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('userType').value = userData.userType;
 
         if (userData.userType === 'mentor') {
-            departmentGroup.style.display = 'flex';
+            departmentGroup.style.display = 'block';
             document.getElementById('department').value = userData.department || '';
         } else {
             departmentGroup.style.display = 'none';

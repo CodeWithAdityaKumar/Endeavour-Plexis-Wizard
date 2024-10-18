@@ -1,3 +1,33 @@
+.notification-icon {
+    position: relative;
+    color: hsl(var(--foreground));
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+.notification-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .nav-controls {
+        display: flex;
+        align-items: center;
+    }
+
+    .notification-icon {
+        margin-right: 0.5rem;
+    }
+}
+
 .profile-container {
     max-width: 800px;
     margin: 2rem auto;

@@ -1,3 +1,33 @@
+.notification-icon {
+    position: relative;
+    color: hsl(var(--foreground));
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+.notification-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .nav-controls {
+        display: flex;
+        align-items: center;
+    }
+
+    .notification-icon {
+        margin-right: 0.5rem;
+    }
+}
+
 .dashboard-container {
     max-width: 1200px;
     margin: 2rem auto;
@@ -105,4 +135,47 @@
         margin-right: 0;
         margin-bottom: 1rem;
     }
+}
+
+.mentor-booking {
+    margin-top: 2rem;
+}
+
+.mentor-card {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mentor-card h3 {
+    color: hsl(var(--primary));
+    margin-bottom: 0.5rem;
+}
+
+.slot-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.slot-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.book-btn {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.booked {
+    color: hsl(var(--muted-foreground));
+    font-style: italic;
 }

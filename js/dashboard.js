@@ -27,38 +27,49 @@ document.addEventListener('DOMContentLoaded', function() {
     if (userData.userType === 'mentor') {
         mentorActions.style.display = 'block';
         initializeMentorActions();
+        displayUpcomingSessions(userData);
     } else {
         userActions.style.display = 'block';
         initializeUserActions();
+        displayUpcomingSessions(userData);
     }
 
-    // Add event listener for Add Availability button (only for mentors)
-    const addAvailabilityBtn = document.getElementById('addAvailability');
-    if (addAvailabilityBtn && userData.userType === 'mentor') {
-        addAvailabilityBtn.addEventListener('click', () => {
-            window.location.href = 'addAvailability.html';
+    function displayUpcomingSessions(userData) {
+        const sessionsList = document.getElementById('sessionsList');
+        let upcomingSessions;
+
+        if (userData.userType === 'mentor') {
+            // For mentors, get accepted session requests
+            upcomingSessions = userData.sessionRequests ? userData.sessionRequests.filter(session => session.status === 'accepted') : [];
+        } else {
+            // For students, get their booked sessions
+            upcomingSessions = JSON.parse(localStorage.getItem(`sessions_${loggedInUserEmail}`)) || [];
+        }
+        
+        sessionsList.innerHTML = ''; // Clear existing content
+        
+        if (upcomingSessions.length === 0) {
+            sessionsList.innerHTML = '<li>No upcoming sessions.</li>';
+            return;
+        }
+
+        upcomingSessions.forEach(session => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="session-info">
+                    <strong>${userData.userType === 'mentor' ? session.studentName : session.mentorName}</strong> - ${session.date} at ${session.time}
+                </div>
+                <div class="session-actions">
+                    <button class="action-btn join-session" data-session-id="${session.id}"><i class="fas fa-video"></i></button>
+                    <button class="action-btn cancel-session" data-session-id="${session.id}"><i class="fas fa-times"></i></button>
+                </div>
+            `;
+            sessionsList.appendChild(li);
         });
     }
 
-    // Populate upcoming sessions
-    const sessionsList = document.getElementById('sessionsList');
-    const upcomingSessions = JSON.parse(localStorage.getItem(`sessions_${loggedInUserEmail}`)) || [];
-    
-    upcomingSessions.forEach(session => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <div class="session-info">
-                <strong>${session.mentorName}</strong> - ${session.date} at ${session.time}
-            </div>
-            <div class="session-actions">
-                <button class="action-btn join-session" data-session-id="${session.id}"><i class="fas fa-video"></i></button>
-                <button class="action-btn cancel-session" data-session-id="${session.id}"><i class="fas fa-times"></i></button>
-            </div>
-        `;
-        sessionsList.appendChild(li);
-    });
-
     // Event delegation for session actions
+    const sessionsList = document.getElementById('sessionsList');
     sessionsList.addEventListener('click', function(e) {
         if (e.target.classList.contains('join-session')) {
             const sessionId = e.target.getAttribute('data-session-id');
@@ -79,10 +90,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function cancelSession(sessionId) {
-        let sessions = JSON.parse(localStorage.getItem(`sessions_${loggedInUserEmail}`)) || [];
-        sessions = sessions.filter(session => session.id !== sessionId);
-        localStorage.setItem(`sessions_${loggedInUserEmail}`, JSON.stringify(sessions));
-        location.reload(); // Refresh the page to update the sessions list
+        if (userData.userType === 'mentor') {
+            userData.sessionRequests = userData.sessionRequests.filter(session => session.id !== sessionId);
+            localStorage.setItem(loggedInUserEmail, JSON.stringify(userData));
+        } else {
+            let sessions = JSON.parse(localStorage.getItem(`sessions_${loggedInUserEmail}`)) || [];
+            sessions = sessions.filter(session => session.id !== sessionId);
+            localStorage.setItem(`sessions_${loggedInUserEmail}`, JSON.stringify(sessions));
+        }
+        displayUpcomingSessions(userData);
+    }
+
+    // Add event listener for Add Availability button (only for mentors)
+    const addAvailabilityBtn = document.getElementById('addAvailability');
+    if (addAvailabilityBtn && userData.userType === 'mentor') {
+        addAvailabilityBtn.addEventListener('click', () => {
+            window.location.href = 'addAvailability.html';
+        });
+    }
+
+    // Add event listener for View Session Requests button (only for mentors)
+    const viewRequestsBtn = document.getElementById('viewRequests');
+    if (viewRequestsBtn && userData.userType === 'mentor') {
+        viewRequestsBtn.addEventListener('click', () => {
+            window.location.href = 'sessionRequests.html';
+        });
     }
 
     // Logout functionality
@@ -161,54 +193,4 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks.addEventListener('click', (event) => {
         event.stopPropagation();
     });
-
-    const mentorList = document.getElementById('mentorList');
-
-    function displayMentorProfiles() {
-        mentorProfiles.forEach(mentor => {
-            const mentorCard = document.createElement('div');
-            mentorCard.className = 'mentor-card';
-            mentorCard.innerHTML = `
-                <h3>${mentor.name}</h3>
-                <p><strong>Department:</strong> ${mentor.department}</p>
-                <p><strong>Expertise:</strong> ${mentor.expertise.join(', ')}</p>
-                <p><strong>Experience:</strong> ${mentor.experience}</p>
-                <p>${mentor.bio}</p>
-                <h4>Available Slots:</h4>
-                <ul class="slot-list">
-                    ${mentor.availableSlots.map(slot => `
-                        <li>
-                            ${slot.day} ${slot.time}
-                            ${slot.status === 'available' 
-                                ? `<button class="book-btn" data-mentor-id="${mentor.id}" data-slot="${slot.day} ${slot.time}">Book</button>`
-                                : '<span class="booked">Booked</span>'
-                            }
-                        </li>
-                    `).join('')}
-                </ul>
-            `;
-            mentorList.appendChild(mentorCard);
-        });
-    }
-
-    displayMentorProfiles();
-
-    // Event delegation for booking buttons
-    mentorList.addEventListener('click', function(e) {
-        if (e.target.classList.contains('book-btn')) {
-            const mentorId = e.target.getAttribute('data-mentor-id');
-            const slot = e.target.getAttribute('data-slot');
-            bookSession(mentorId, slot);
-        }
-    });
-
-    function bookSession(mentorId, slot) {
-        // Here you would typically send a request to your server to book the session
-        // For this example, we'll just update the UI
-        alert(`Session booked with Mentor ID ${mentorId} for ${slot}`);
-        e.target.textContent = 'Booked';
-        e.target.disabled = true;
-        e.target.classList.remove('book-btn');
-        e.target.classList.add('booked');
-    }
 });

@@ -1,0 +1,74 @@
+.session-requests-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.session-requests-container h1 {
+    color: hsl(var(--primary));
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.request-item {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.request-item h2 {
+    color: hsl(var(--primary));
+    margin-bottom: 1rem;
+}
+
+.request-info {
+    margin-bottom: 1rem;
+}
+
+.request-info p {
+    margin-bottom: 0.5rem;
+}
+
+.request-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.accept-btn, .reject-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.accept-btn {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+}
+
+.accept-btn:hover {
+    background-color: hsl(var(--primary) / 0.8);
+}
+
+.reject-btn {
+    background-color: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+}
+
+.reject-btn:hover {
+    background-color: hsl(var(--destructive) / 0.8);
+}
+
+@media (max-width: 768px) {
+    .request-actions {
+        flex-direction: column;
+    }
+
+    .accept-btn, .reject-btn {
+        width: 100%;
+    }
+}

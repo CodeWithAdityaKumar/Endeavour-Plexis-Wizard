@@ -18,9 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const mentors = [];
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
-            const value = JSON.parse(localStorage.getItem(key));
-            if (value && value.userType === 'mentor') {
-                mentors.push(value);
+            try {
+                const value = JSON.parse(localStorage.getItem(key));
+                if (value && value.userType === 'mentor') {
+                    mentors.push(value);
+                }
+            } catch (e) {
+                console.error('Error parsing JSON from localStorage:', e);
+                // Skip this item and continue with the next one
+                continue;
             }
         }
         return mentors;

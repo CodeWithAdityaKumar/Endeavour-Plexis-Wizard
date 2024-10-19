@@ -3,7 +3,7 @@ const mentorProfiles = [
        {
         id: 3,
         name: "Dr. Birmohan Singh",
-        image: 'http://sliet.ac.in/wp-content/uploads/avatars/5/6fc17d6735998f4f22a0e91fbf43b75c-bpfull.jpg',
+        image: '../images/mentors/6fc17d6735998f4f22a0e91fbf43b75c-bpfull.jpg',
         department: "Computer Science",
         expertise: ["Software Engineering", "System Analysis and Design", "Cybersecurity"],
         experience: "12 years",
@@ -17,7 +17,7 @@ const mentorProfiles = [
 	 {
         id: 4,
         name: "Dr. Damanpreet Singh",
-        image: 'http://sliet.ac.in/wp-content/uploads/avatars/4/65783e7db0473-bpfull.jpg',
+        image: '../images/mentors/65783e7db0473-bpfull.jpg',
         department: "Computer Science",
         expertise: ["Software Engineering", "Web Development", "Applications of AI/ML Algorithms in VLSI Design"],
         experience: "25 years",
@@ -31,7 +31,7 @@ const mentorProfiles = [
 	 {
         id: 5,
         name: "Dr. Major Singh Goraya",
-        image: 'http://sliet.ac.in/wp-content/uploads/avatars/35/5e69c6be20c7e-bpfull.jpg',
+        image: '../images/mentors/5e69c6be20c7e-bpfull.jpg',
         department: "Computer Science",
         expertise: ["Software Engineering", "Cloud computing", "IOT and Machine Learning"],
         experience: "12 years",
@@ -45,7 +45,7 @@ const mentorProfiles = [
 	 {
         id: 6,
         name: "Dr. Manoj Sachan",
-        image: 'http://sliet.ac.in/wp-content/uploads/avatars/6/605c66bd3e3bc-bpfull.jpg',
+        image: '../images/mentors/605c66bd3e3bc-bpfull.jpg',
         department: "Computer Science",
         expertise: ["Software Engineering", "Cloud computing", "IOT and Machine Learning"],
         experience: "22 years",
@@ -59,7 +59,7 @@ const mentorProfiles = [
 	 {
         id: 7,
         name: "Dr. Gurjinder Kaur",
-        image: 'http://sliet.ac.in/wp-content/uploads/avatars/14/5f2245e7a7f1bde5dee5bda48e09d411-bpfull.jpg',
+        image: '../images/mentors/5f2245e7a7f1bde5dee5bda48e09d411-bpfull.jpg',
         department: "Computer Science",
         expertise: ["Software Engineering", "Web Development", "Cybersecurity"],
         experience: "12 years",
@@ -73,7 +73,7 @@ const mentorProfiles = [
 	 {
         id: 8,
         name: "Dr. Amar Nath",
-        image: 'http://sliet.ac.in/wp-content/uploads/avatars/467/66b8bb350cc46-bpfull.jpg',
+        image: '../images/mentors/66b8bb350cc46-bpfull.jpg',
         department: "Computer Science",
         expertise: ["Software Engineering", "Internet of Robotics Things", "Artificial Intelligence"],
         experience: "12 years",

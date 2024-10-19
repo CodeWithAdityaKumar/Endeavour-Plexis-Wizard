@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const requestElement = document.createElement('div');
             requestElement.className = 'request-item';
             requestElement.innerHTML = `
-                <h2>Session Request</h2>
+                
                 <div class="request-info">
                     <p><strong>Student:</strong> ${request.studentName}</p>
                     <p><strong>Date:</strong> ${request.date}</p>

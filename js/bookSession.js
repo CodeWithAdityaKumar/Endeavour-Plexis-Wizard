@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Display mentor profile
         mentorProfile.innerHTML = `
             <div class="mentor-card">
-                <img src="${mentor.profileImage || '../../../images/default-profile.png'}" alt="${mentor.name}" class="mentor-image">
+                <img src="${mentor.profileImage|| mentor.image || '../../../images/default-profile.png'}" alt="${mentor.name}" class="mentor-image">
                 <div class="mentor-info">
                     <h2>${mentor.name || mentor.fullName}</h2>
                     <p><strong>Department:</strong> ${mentor.department}</p>

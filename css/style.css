@@ -196,6 +196,7 @@ nav {
 h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
+    margin-top: 2rem;
     text-align: center;
     color: hsl(var(--primary));
 }
@@ -205,6 +206,8 @@ h2 {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
 }
+
+
 
 .mentor-item, .department-item {
     background-color: hsl(var(--card));

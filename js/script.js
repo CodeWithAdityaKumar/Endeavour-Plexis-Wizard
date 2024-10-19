@@ -1,11 +1,6 @@
 // Sample mentor data with dummy images
 const mentors = [
-    { name: 'Dr. Anil Kumar', expertise: 'Computer Science', image: 'https://randomuser.me/api/portraits/men/1.jpg' },
-    { name: 'Dr. Priya Sharma', expertise: 'Mechanical Engineering', image: 'https://randomuser.me/api/portraits/women/2.jpg' },
-    { name: 'Prof. Rajesh Verma', expertise: 'Electrical Engineering', image: 'https://randomuser.me/api/portraits/men/3.jpg' },
-    { name: 'Dr. Sunita Patel', expertise: 'Chemical Engineering', image: 'https://randomuser.me/api/portraits/women/4.jpg' },
-    { name: 'Dr. Vikram Singh', expertise: 'Civil Engineering', image: 'https://randomuser.me/api/portraits/men/5.jpg' },
-    { name: 'Prof. Meera Gupta', expertise: 'Food Engineering', image: 'https://randomuser.me/api/portraits/women/6.jpg' },
+    
 ];
 
 // Sample department data with dummy images

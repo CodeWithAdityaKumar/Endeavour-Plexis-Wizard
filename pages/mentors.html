@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SLIET Mentorship</title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/login.css">
+    <title>Mentors - SLIET Mentorship</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/mentors.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo navLeft">
-                <img src="../../images/logoSliet.png" alt="SLIET Logo" class="logo-image">
+                <img src="../images/logoSliet.png" alt="SLIET Logo" class="logo-image">
                 <h1>SLIET Mentorship</h1>
             </div>
             <div class="navRight">
                 <ul class="nav-links">
-                    <li><a href="../../index.html#home">Home</a></li>
-                    <li><a href="../../index.html#mentors">Mentors</a></li>
-                    <li><a href="../../index.html#departments">Departments</a></li>
-                    <li><a href="../../index.html#about">About</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li><a href="../index.html#about">About</a></li>
                 </ul>
                 <div class="nav-controls">
                     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -47,32 +47,48 @@
         </nav>
     </header>
 
-    <main class="login-container">
-        <div class="login-form">
-            <h2>Login to SLIET Mentorship</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="login-btn">Log In</button>
-            </form>
-            <p class="forgot-password"><a href="#">Forgot password?</a></p>
-            <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+    <main class="mentors-container">
+        <h1>Our Mentors</h1>
+        <div class="search-bar">
+            <input type="text" id="mentorSearch" placeholder="Search mentors...">
+            <button id="searchButton"><i class="fas fa-search"></i></button>
+        </div>
+        <div id="mentorList" class="mentor-grid">
+            <!-- Mentor cards will be dynamically added here -->
         </div>
     </main>
 
     <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SLIET Mentorship</h3>
+                <p>Your trusted source for finding academic mentors at Sant Longowal Institute of Engineering and Technology.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="../index.html#departments">Departments</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
         <div class="footer-bottom">
             <p>&copy; 2024 SLIET Mentorship. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- <script src="../../js/script.js"></script> -->
-    <script src="../../js/login.js"></script>
+    <script src="../js/mentors.js" type="module"></script>
 </body>
 </html>
+
